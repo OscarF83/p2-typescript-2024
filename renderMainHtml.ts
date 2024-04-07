@@ -8,12 +8,12 @@ const renderCountries = (countries: Array<Country>) => {
       `<div><img src="${country.flags.png}" /></div>
         <div>${country.nameCountry}</div>
     <div>${country.capitalCountry}</div>
-    <div> <p><a href="https://restcountries.com"> More details... </a></p></div>`;
+    <div> <p><a href=/${country.nameCountry}.html> More details... </a></p></div>`;
   }
   return html;
 };
 
-export const renderMainHtml = (users: Array<Country>) => {
+export const renderMainHtml = (countries: Array<Country>) => {
   return `
 <html>
   <head>
@@ -21,7 +21,7 @@ export const renderMainHtml = (users: Array<Country>) => {
   <title>Countries List</title>
 </head>
   <body>
-    ${renderCountries(users)}
+    ${renderCountries(countries)}
   </body>
 </html>`;
 };
