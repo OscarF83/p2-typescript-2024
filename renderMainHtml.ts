@@ -27,13 +27,18 @@ export const renderMainHtml = (countries: Array<Country>) => {
   <title>Countries List</title>
   <style>
   body{
-    background-color: rgb(20,20,20);
+    background-color: rgb(30,30,30);
     color: white;
+    font.family: sans-serif;
+  }
+  .title{
+    text-align: center;
   }
   .country {
     display: flex;
     flex-direction: row;
     padding: 1em;
+    text-align: center;
   }
   .country img{
     border: 1px solid black;
@@ -56,6 +61,7 @@ export const renderMainHtml = (countries: Array<Country>) => {
   </style>
 </head>
   <body>
+  <div class="title"><h1> List of countries </h1> </div>
     ${renderCountries(countries)}
   </body>
 </html>`;

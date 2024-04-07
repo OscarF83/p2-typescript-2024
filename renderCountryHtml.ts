@@ -8,14 +8,30 @@ export const renderCountryHtml = async (countries: Array<Country>) => {
   <head>
   <meta charset="UTF-8">
   <title>Countries List</title>
+  <style>
+  body{
+    background-color: rgb(30,30,30);
+    color: white;
+  }
+  .country {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    font-family: sans-serif;
+  }
+  div {
+    padding: 1em;
+  }
+  </style>
 </head>
   <body>
+  <div class="country"><h1> ${country.nameCountry} </h1> 
   <div><img src="${country.flags.png}" /></div>
-        <div>${country.nameCountry}</div>
-    <div>${country.capitalCountry}</div>
-    <div>${country.region}</div>
-    <div><p>${country.area} Km2</p></div>
-    <div><p>${country.population} nº of people</p></div>
+    <div>Capital: ${country.capitalCountry}</div>
+    <div>Region: ${country.region}</div>
+    <div>${country.area} Km2</div>
+    <div>${country.population} nº of people</div>
+  </div>
   </body>
 </html>`;
     await writeFile(`${country.nameCountry.replace(/ /g, "")}.html`, html);

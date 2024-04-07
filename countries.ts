@@ -189,7 +189,7 @@ export class Country {
 }
 
 export const loadCountries = async (numberOfCountries: number) => {
-  const response = await fetch(`https://restcountries.com/v3.1/region/europe`);
+  const response = await fetch(`https://restcountries.com/v3.1/all`);
   if (!response.ok) {
     throw new Error(`Error: ${response.status}`);
   }
