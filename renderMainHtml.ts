@@ -7,7 +7,8 @@ const renderCountries = (countries: Array<Country>) => {
       html +
       `<div><img src="${country.flags.png}" /></div>
         <div>${country.nameCountry}</div>
-    <div>${country.capitalCountry}</div>`;
+    <div>${country.capitalCountry}</div>
+    <div> <p><a href="https://restcountries.com"> More details... </a></p></div>`;
   }
   return html;
 };
