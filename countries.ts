@@ -10,7 +10,7 @@ export class Country {
         };
       };
     },
-    public capital: Array<string>,
+
     public region: string,
     public area: number,
     public population: number,
@@ -20,6 +20,7 @@ export class Country {
       svg: string;
       alt?: string;
     },
+    public capital?: Array<string>,
     public languages?: {
       eng?: string;
       zho?: string;
@@ -182,18 +183,21 @@ export class Country {
   get nameCountry() {
     return `${this.name.common}`;
   }
+  get capitalCountry() {
+    return `${this.capital != undefined ? this.capital[0] : this.nameCountry}`;
+  }
 }
 
 export const loadCountries = async (language: string) => {
-  const response = await fetch(`https://restcountries.com/v3.1/lang/${language}`);
+  const response = await fetch(`https://restcountries.com/v3.1/all`);
   if (!response.ok) {
     throw new Error(`Error: ${response.status}`);
   }
   const results = (await response.json()) as Array<any>;
   const countries: Array<Country> = [];
-  for (const { name, capital, region, area, population, continents, flags, languages } of results) {
+  for (const { name, region, area, population, continents, flags, capital, languages } of results) {
     countries.push(
-      new Country(name, capital, region, area, population, continents, flags, languages)
+      new Country(name, region, area, population, continents, flags, capital, languages)
     );
   }
   return countries;
