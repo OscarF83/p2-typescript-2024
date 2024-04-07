@@ -189,7 +189,7 @@ export class Country {
 }
 
 export const loadCountries = async (numberOfCountries: number) => {
-  const response = await fetch(`https://restcountries.com/v3.1/all`);
+  const response = await fetch(`https://restcountries.com/v3.1/region/europe`);
   if (!response.ok) {
     throw new Error(`Error: ${response.status}`);
   }
@@ -200,5 +200,12 @@ export const loadCountries = async (numberOfCountries: number) => {
       new Country(name, region, area, population, continents, flags, capital, languages)
     );
   }
+  if (numberOfCountries > countries.length) {
+    numberOfCountries = countries.length;
+  }
+  if (numberOfCountries < 1) {
+    numberOfCountries = 1;
+  }
+  countries.splice(numberOfCountries, countries.length - numberOfCountries);
   return countries;
 };
