@@ -18,6 +18,6 @@ export const renderCountryHtml = async (countries: Array<Country>) => {
     <div><p>${country.population} nº of people</p></div>
   </body>
 </html>`;
-    await writeFile(`${country.nameCountry}.html`, html);
+    await writeFile(`${country.nameCountry.replace(/ /g, "")}.html`, html);
   }
 };
