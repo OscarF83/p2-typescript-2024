@@ -7,7 +7,7 @@ export const renderCountryHtml = async (countries: Array<Country>) => {
     html = `<html>
   <head>
   <meta charset="UTF-8">
-  <title>Countries List</title>
+  <title>${country.nameCountry}</title>
   <style>
   body{
     background-color: rgb(30,30,30);
@@ -18,6 +18,9 @@ export const renderCountryHtml = async (countries: Array<Country>) => {
     flex-direction: column;
     text-align: center;
     font-family: sans-serif;
+  }
+  .country img{
+    border: 1px solid grey;
   }
   div {
     padding: 1em;
@@ -31,6 +34,7 @@ export const renderCountryHtml = async (countries: Array<Country>) => {
     <div>Region: ${country.region}</div>
     <div>${country.area} Km2</div>
     <div>${country.population} nº of people</div>
+    <div>${country.languagesCountry}</div>
   </div>
   </body>
 </html>`;

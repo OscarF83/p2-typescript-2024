@@ -20,8 +20,7 @@ export class Country {
       svg: string;
       alt?: string;
     },
-    public capital?: Array<string>,
-    public languages?: {
+    public languages: {
       eng?: string;
       zho?: string;
       sin?: string;
@@ -177,7 +176,8 @@ export class Country {
       arc?: string;
       ckb?: string;
       fao?: string;
-    }
+    },
+    public capital?: Array<string>
   ) {}
 
   get nameCountry() {
@@ -185,6 +185,16 @@ export class Country {
   }
   get capitalCountry() {
     return `${this.capital != undefined ? this.capital[0] : this.nameCountry}`;
+  }
+  get languagesCountry() {
+    const finalLanguageList = Object.values(this.languages).map((value) => {
+      const languageList = " " + value;
+      return languageList;
+    });
+    if (finalLanguageList.length > 1) {
+      return `Languages: ${finalLanguageList}`;
+    }
+    return `Language: ${finalLanguageList}`;
   }
 }
 
@@ -197,7 +207,7 @@ export const loadCountries = async (numberOfCountries: number) => {
   const countries: Array<Country> = [];
   for (const { name, region, area, population, continents, flags, capital, languages } of results) {
     countries.push(
-      new Country(name, region, area, population, continents, flags, capital, languages)
+      new Country(name, region, area, population, continents, flags, languages, capital)
     );
   }
   if (numberOfCountries > countries.length) {

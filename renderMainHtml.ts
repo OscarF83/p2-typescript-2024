@@ -29,7 +29,7 @@ export const renderMainHtml = (countries: Array<Country>) => {
   body{
     background-color: rgb(30,30,30);
     color: white;
-    font.family: sans-serif;
+    font-family: sans-serif;
   }
   .title{
     text-align: center;
@@ -41,7 +41,7 @@ export const renderMainHtml = (countries: Array<Country>) => {
     text-align: center;
   }
   .country img{
-    border: 1px solid black;
+    border: 1px solid grey;
   }
   .info{
     display: flex;
